@@ -1,0 +1,11 @@
+<launch>
+    <!-- load parameters for camera properties, detection & tracking configs, etc. -->
+    <rosparam file="$(find path_select)/config/params.yaml" command="load" />
+
+    <!-- detection, tracking, fusing lidar info -->
+    <!-- generate human states/trajectories, perform trajectory prediction and generate costmap -->
+    <node pkg="path_select" type="conda_run_human_env.sh" name="human_env_info_node" output="screen" />
+
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find path_select)/visual_social.rviz" />
+
+</launch>

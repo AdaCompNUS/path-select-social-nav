@@ -1,0 +1,12 @@
+<launch>
+    <!-- load parameters for camera properties, detection & tracking configs, etc. -->
+    <rosparam file="$(find path_select)/config/params.yaml" command="load" />
+
+    <!-- motion planning, sample paths based on costmap -->
+    <node pkg="path_select" type="conda_run_planning.sh" name="path_planning_node" output="screen" />
+
+    <node pkg="path_select" type="conda_run_controller.sh" name="controller_node" output="screen" />
+
+    <node pkg="path_select" type="conda_run_sequencer.sh" name="sequencer" output="screen" />
+
+</launch>

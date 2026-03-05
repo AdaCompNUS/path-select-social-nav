@@ -1,0 +1,4 @@
+---
+float32[] path
+bool success
+string message

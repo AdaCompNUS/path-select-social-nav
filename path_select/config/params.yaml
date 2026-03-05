@@ -1,0 +1,66 @@
+# mode selection
+use_localization: False  # false if using raw odometry and fixed goal
+
+# goal for odometry mode (relative pos to start)
+final_goal:
+  x: 10.5
+  y: -0.8
+
+# fx,  0, cx
+#  0, fy, cy
+#  0,  0,  1
+camera_intrinsics:
+  - [ 507.513528,         0.0,  644.033754 ] 
+  - [    0.0    ,  506.737380,  327.893719 ]  
+  - [    0.0    ,         0.0,         1.0 ]  
+
+# k1, k2, p1, p2, k3
+camera_distortion:
+  - [ -0.314830, 0.112120, -0.000391, 0.000917, -0.018521 ]
+
+extrinsics: 
+  - [ 0.027894, -0.999610,  0.001571,  0.013101 ]
+  - [-0.045953, -0.002853, -0.998940, -0.208488 ]
+  - [ 0.998554,  0.027792, -0.046015, -0.274126 ]
+  - [        0,         0,         0,      1    ]
+
+image_size: [1280, 720]
+
+path_pseudo_height: -0.7
+
+detect_cfg:
+  imgsz: 704           # must be multiple of max stride 32
+  confidence_thresh: 0.25
+
+track_cfg:
+  track_thresh: 0.35
+  track_buffer: 20     # frames for keep lost tracks
+  match_thresh: 0.9
+
+filter_range:
+  fwd: [-0.5, 15]
+  side: [-10, 10]
+  height: [-0.2, 1.5]  # adjust based on: lidar's height and FOV specs; if indoors, consider ceiling, default: -0.2~2
+
+axis_specs:
+  fwd: [0, 1]
+  side: [1, -1]
+  height: [2, 1]       # lidar-direction correspondence tuple, i.e.'fwd' (1, -1) means fwd align with y-axis <index 1> negative direction <-1>
+
+anchor_cfgs:
+  min_dist: 5
+  range_width: 30      # 30, need to be adjusted according to environment obstacles, better idea?
+  forward_scale: 0.6
+  num_anchors: 40
+  dilate_radius: 5
+
+controller_cfgs:
+  time_step: 0.5
+  time_horizon: 5
+  time_horizon_obst: 5
+  robot_radius: 0.5
+  robot_v_pref: 0.5      # preferred (max) speed of the robot 
+  human_radius: 0.5
+  max_speed: 1.8         # the ego agent assumes that all other agents have this max speed
+  safety_space: 0.3
+  sensor_range: 5
