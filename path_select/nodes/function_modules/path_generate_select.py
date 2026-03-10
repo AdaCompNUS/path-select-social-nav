@@ -3,7 +3,6 @@ import numpy as np
 import heapq
 from scipy.ndimage import binary_dilation
 from scipy.spatial.distance import directed_hausdorff
-from skimage.draw import line
 
 from PIL import Image
 import requests
