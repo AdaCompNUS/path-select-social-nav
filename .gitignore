@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+logs/
+*.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Build / dist
+build/
+dist/
+*.egg-info/
+
+# Checkpoints and model outputs
+**/checkpoints/
+**/outputs/
+**/runs/
+**/wandb/
+**/tensorboard/
+
+# Data
+data/
+datasets/
+
+# ROS / catkin
+devel/
+build_isolated/
+devel_isolated/
+log/
+
+# VLM training artifacts
+vlm_train_inference/data/
+
